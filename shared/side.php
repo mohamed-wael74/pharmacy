@@ -1,67 +1,45 @@
-  <!-- ======= Sidebar ======= -->
-  <aside id="sidebar" class="sidebar">
+<?php
+session_start();
+?>
 
-      <ul class="sidebar-nav" id="sidebar-nav">
+<!-- ======= Sidebar ======= -->
+<aside id="sidebar" class="sidebar">
 
-          <li class="nav-item">
-              <a class="nav-link " href="/adminPanel/index.php">
-                  <i class="bi bi-grid"></i>
-                  <span>Home</span>
-              </a>
-          </li><!-- End Dashboard Nav -->
+    <ul class="sidebar-nav" id="sidebar-nav">
 
-          <li class="nav-heading">Pages</li>
+        <li class="nav-item">
+            <a class="nav-link " href="/Pharmacy/pharmacistPanel/index.php">
+                <i class="bi bi-grid"></i>
+                <span>Home</span>
+            </a>
+        </li><!-- End Dashboard Nav -->
+        <?php if (isset($_SESSION['pharmacist'])) : ?>
+            <li class="nav-heading">Pages</li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/Pharmacy/pharmacistPanel/admin/list-medicine.php">
+                    <i class="bi bi-envelope"></i>
+                    <span>Medicine</span>
+                </a>
+            </li><!-- End Medicine Page Nav -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/Pharmacy/pharmacistPanel/admin/add-pharmacist.php">
+                    <i class="bi bi-envelope"></i>
+                    <span>Pharmacists</span>
+                </a>
+            </li><!-- End Pharmacists Page Nav -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/Pharmacy/pharmacistPanel/admin/add-branches.php">
+                    <i class="bi bi-envelope"></i>
+                    <span>Branches</span>
+                </a>
+            </li><!-- End Branches Page Nav -->
+        <?php endif; ?>
+            <li class="nav-item">
+            <a class="nav-link collapsed" href="/Pharmacy/pharmacistPanel/admin/pages-login.php">
+                <i class="bi bi-box-arrow-in-right"></i>
+                <span>Login</span>
+            </a>
+            </li><!-- End Login Page Nav -->
+    </ul>
 
-          <li class="nav-item">
-              <a class="nav-link collapsed" href="/adminPanel/admin/users-profile.php">
-                  <i class="bi bi-person"></i>
-                  <span>Profile</span>
-              </a>
-          </li><!-- End Profile Page Nav -->
-          <li class="nav-item">
-              <a class="nav-link collapsed" href="/adminPanel/admin/list-customers.php">
-                  <i class="bi bi-envelope"></i>
-                  <span>Customers</span>
-              </a>
-          </li><!-- End Contact Page Nav -->
-          <li class="nav-item">
-              <a class="nav-link collapsed" href="/adminPanel/admin/add-admin.php">
-                  <i class="bi bi-envelope"></i>
-                  <span>Admins</span>
-              </a>
-          </li><!-- End Admins Page Nav -->
-          <li class="nav-item">
-              <a class="nav-link collapsed" href="/adminPanel/admin/add-pharmacist.php">
-                  <i class="bi bi-envelope"></i>
-                  <span>Pharmacists</span>
-              </a>
-          </li><!-- End Pharmacists Page Nav -->
-          <li class="nav-item">
-              <a class="nav-link collapsed" href="/adminPanel/admin/add-category.php">
-                  <i class="bi bi-envelope"></i>
-                  <span>Categories</span>
-              </a>
-          </li><!-- End Categories Page Nav -->
-          <li class="nav-item">
-              <a class="nav-link collapsed" href="/adminPanel/admin/add-branches.php">
-                  <i class="bi bi-envelope"></i>
-                  <span>Branches</span>
-              </a>
-          </li><!-- End Branches Page Nav -->
-          <li class="nav-item">
-              <a class="nav-link collapsed" href="/adminPanel/admin/pages-login.php">
-                  <i class="bi bi-box-arrow-in-right"></i>
-                  <span>Login</span>
-              </a>
-          </li><!-- End Login Page Nav -->
-
-          <li class="nav-item">
-              <a class="nav-link collapsed" href="/adminPanel/pages-error-404.php">
-                  <i class="bi bi-dash-circle"></i>
-                  <span>Error 404</span>
-              </a>
-          </li><!-- End Error 404 Page Nav -->
-
-      </ul>
-
-  </aside><!-- End Sidebar-->
+</aside><!-- End Sidebar-->

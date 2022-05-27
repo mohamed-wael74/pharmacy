@@ -3,14 +3,20 @@ include "../shared/head.php";
 include "../shared/header.php";
 include "../shared/side.php";
 include "../general/env.php";
-if(isset($_POST['addAdmin'])){
-$name = $_POST['name'];
-$phone = $_POST['phone'];
-$email = $_POST['email'];
-$password = $_POST['password'];
-$insert = "INSERT INTO `admin` VALUES (NULL , '$name' , '$phone' , '$email' , $password)";
-$i = mysqli_query($connect,$insert);
+if (isset($_POST['addAdmin'])) {
+    $name = $_POST['name'];
+    $phone = $_POST['phone'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $insert = "INSERT INTO `admin` VALUES (NULL , '$name' , '$phone' , '$email' , $password)";
+    $i = mysqli_query($connect, $insert);
 }
+
+if (isset($_SESSION['pharmacist'])) {
+} else {
+    header('location:/Pharmacy/pharmacistPanel/pages-error-404.php');
+}
+
 ?>
 <p class="text-center display-6 "> ADD PAGE </p>
 <h1 class="text-center display-3"> ADD ADMIN </h1>
@@ -18,7 +24,7 @@ $i = mysqli_query($connect,$insert);
 <div class="container col-md-6">
     <div class="card">
         <div class="card-body">
-            <form method="POST" >
+            <form method="POST">
                 <div class="mb-3">
                     <label>Name</label>
                     <input type="text" name="name" class="form-control">
@@ -28,7 +34,7 @@ $i = mysqli_query($connect,$insert);
                     <input type="text" name="phone" class="form-control">
                 </div>
                 <div class="mb-3">
-                    <label >Email address</label>
+                    <label>Email address</label>
                     <input type="email" name="email" class="form-control">
                 </div>
                 <div class="mb-3">

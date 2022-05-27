@@ -13,9 +13,12 @@ if (isset($_POST['addBranch'])) {
     $insert = "INSERT INTO `branches` VALUES (NULL , '$location' , $admin_id)";
     $i = mysqli_query($connect, $insert);
 }
+if (isset($_SESSION['pharmacist'])) {
+} else {
+    header('location:/pharmacistPanel/pages-error-404.php');
+}
 ?>
 
-<p class="text-center display-6 "> ADD PAGE </p>
 <div class="mt-5">
     <h5 class="text-center display-6 mt-5"> ADD Branch </h5>
 </div>

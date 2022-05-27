@@ -7,17 +7,21 @@ include "../general/env.php";
 $select = "SELECT * FROM `branches`";
 $branch = mysqli_query($connect, $select);
 
-if(isset($_POST['addPharmacist'])){
+if (isset($_POST['addPharmacist'])) {
     $name = $_POST['name'];
     $phone = $_POST['phone'];
     $email = $_POST['email'];
     $password = $_POST['password'];
     $branch_id = $_POST['branch_id'];
-    $insert = "INSERT INTO `pharmacist` VALUES (NULL , '$name' , '$phone' , '$email' , $password , $branch_id )";
-    $i = mysqli_query($connect,$insert);
-    }
+    $insert = "INSERT INTO `pharmacist` VALUES (NULL , '$name' , $phone , '$email' , '$password' , $branch_id )";
+    $i = mysqli_query($connect, $insert);
+}
+if (isset($_SESSION['pharmacist'])) {
+} else {
+    header('location:/pharmacistPanel/pages-error-404.php');
+}
 ?>
-<p class="text-center display-6 "> ADD PAGE </p>
+
 <h5 class="text-center display-3"> ADD PHARMACIST </h5>
 
 <div class="container col-md-6">
@@ -44,12 +48,12 @@ if(isset($_POST['addPharmacist'])){
                     <label for=""> Branches : </label>
                     <select name="branch_id" class="form-control">
                         <?php foreach ($branch as $data) { ?>
-                            <option value="<?php echo $data['branch_id']; ?>" > <?php echo $data['location']; ?> </option>
+                            <option value="<?php echo $data['branch_id']; ?>"> <?php echo $data['location']; ?> </option>
                         <?php } ?>
                     </select>
                 </div>
                 <div class="d-grid gap-2">
-                    <button class="btn btn-outline-success" name="addPharmacist" >Add Pharmacist</button>
+                    <button class="btn btn-outline-success" name="addPharmacist">Add Pharmacist</button>
                 </div>
             </form>
         </div>
